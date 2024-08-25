@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python - Objektno Orijentisano Programiranje</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <style>
+        /* General styles */
+        .content-box {
+            background-color: white;
+            border: 2px solid black;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .content-box-left {
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-right: 20px;
+        }
+
+        .content-box h2 {
+            margin: 0;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .progress-container {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+            justify-content: center;
+        }
+
+        .progress-bar {
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+            width: 100%;
+            height: 20px;
+        }
+
+        .progress-bar-inner {
+            background-color: #4caf50;
+            height: 100%;
+            width: 0%;
+            text-align: center;
+            color: white;
+            font-size: 12px;
+        }
+
+        .description {
+            flex: 1;
+            font-size: 14px;
+        }
+
+        .learn-more-button {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        /* Button styles */
+        button {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            outline: none;
+            border: 0;
+            vertical-align: middle;
+            text-decoration: none;
+            background: transparent;
+            padding: 0;
+            font-size: inherit;
+            font-family: inherit;
+        }
+
+        button.learn-more {
+            width: 12rem;
+            height: auto;
+        }
+
+        button.learn-more .circle {
+            transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+            position: relative;
+            display: block;
+            margin: 0;
+            width: 3rem;
+            height: 3rem;
+            background: #282936;
+            border-radius: 1.625rem;
+        }
+
+        button.learn-more .circle .icon {
+            transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            background: #fff;
+        }
+
+        button.learn-more .circle .icon.arrow {
+            transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+            left: 0.625rem;
+            width: 1.125rem;
+            height: 0.125rem;
+            background: none;
+        }
+
+        button.learn-more .circle .icon.arrow::before {
+            position: absolute;
+            content: "";
+            top: -0.29rem;
+            right: 0.0625rem;
+            width: 0.625rem;
+            height: 0.625rem;
+            border-top: 0.125rem solid #fff;
+            border-right: 0.125rem solid #fff;
+            transform: rotate(45deg);
+        }
+
+        button.learn-more .button-text {
+            transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 0.75rem 0;
+            margin: 0 0 0 1.85rem;
+            color: #282936;
+            font-weight: 700;
+            line-height: 1.6;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        button:hover .circle {
+            width: 100%;
+        }
+
+        button:hover .circle .icon.arrow {
+            background: #fff;
+            transform: translate(1rem, 0);
+        }
+
+        button:hover .button-text {
+            color: #fff;
+        }
+
+        /* Overall progress bar styles */
+        .overall-progress-container {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: white;
+            border: 2px solid black;
+            border-radius: 15px;
+            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .overall-progress-bar {
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+            height: 25px;
+            margin-top: 10px;
+        }
+
+        .overall-progress-bar-inner {
+            background-color: #4caf50;
+            height: 100%;
+            width: 0%;
+            text-align: center;
+            color: white;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <a href="../../index.html" class="logo">
+            <img src="../../logo.png" width="100%" alt="logo">
+        </a>
+    </div>
+    
+    <header class="menu-header">
+        <nav class="menu">
+            <ul>
+                <li>Matematika
+                    <ul>
+                        <li>Logika</li>
+                        <li>Linearna algebra</li>
+                        <li>Kombinatorika</li>
+                        <li>Kalkulus</li>
+                        <li>Vjerovatnoća</li>
+                    </ul>
+                </li>
+                <li><a href="../oop.html" class="active">Objektno orijentisano programiranje</a>
+                    <ul>
+                        <li><a href="python.html" class="active">Python</a></li>
+                        <li>Java</li>
+                        <li>C++</li>
+                    </ul>
+                    </a>
+                </li>
+                <li>Funkcionalno programiranje
+                    <ul>
+                        <li>OCaml</li>
+                        <li>Haskell</li>
+                    </ul>
+                </li>
+                <li>Logičko programiranje
+                    <ul>
+                        <li>Prolog</li>
+                    </ul>
+                </li>
+                <li>Digitalna tehnika</li>
+                <li>Računarska arhitektura</li>
+                <li>Računarske mreže</li>
+                <li>Baze podataka</li>
+            </ul>
+        </nav>
+    </header>
+
+    <aside class="sidebar">
+        <div class="sidebar-link" data-scroll-target="section1">Ispis i Unos u Pythonu</div>
+        <div class="sidebar-link" data-scroll-target="section2">Osnove programiranja u Pythonu</div>
+        <div class="sidebar-link" data-scroll-target="section3">Python kao jezik za znanost o podacima</div>
+    </aside>
+    
+    <main>
+        <section id="section1">
+            <div class="content-box">
+                <div class="content-box-left">
+                    <h2>Ispis i Unos u Pythonu</h2>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div id="progress-bar-section1" class="progress-bar-inner">0%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="description">
+                    Ovdje ćete naučiti kako koristiti funkcije za ispis i unos podataka u Pythonu. Naučit ćete koristiti `print()` funkciju za ispis i `input()` funkciju za unos podataka od korisnika.
+                </div>
+                <div class="learn-more-button">
+                    <a href="python_unos_ispis/python_unos_ispis.html">
+                        <button class="learn-more">
+                            <span class="circle" aria-hidden="true">
+                            <span class="icon arrow"></span>
+                            </span>
+                            <span class="button-text">Nauči</span>
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="section2">
+            <div class="content-box">
+                <div class="content-box-left">
+                    <h2>Osnove programiranja u Pythonu</h2>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div id="progress-bar-section2" class="progress-bar-inner">0%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="description">
+                    Ovaj dio obuhvata osnovne koncepte programiranja u Pythonu, uključujući varijable, petlje, uslovne izjave i još mnogo toga.
+                </div>
+                <div class="learn-more-button">
+                    <a href="python_osnove_programiranja.html">
+                        <button class="learn-more">
+                            <span class="circle" aria-hidden="true">
+                            <span class="icon arrow"></span>
+                            </span>
+                            <span class="button-text">Nauči</span>
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="section3">
+            <div class="content-box">
+                <div class="content-box-left">
+                    <h2>Python kao jezik za znanost o podacima</h2>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div id="progress-bar-section3" class="progress-bar-inner">0%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="description">
+                    Ovdje ćete naučiti kako koristiti Python za analizu podataka, uključujući biblioteke poput NumPy, pandas i matplotlib.
+                </div>
+                <div class="learn-more-button">
+                    <a href="python_znanost_podaci.html">
+                        <button class="learn-more">
+                            <span class="circle" aria-hidden="true">
+                            <span class="icon arrow"></span>
+                            </span>
+                            <span class="button-text">Nauči</span>
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <div class="overall-progress-container">
+            <h2>Ukupan Napredak</h2>
+            <div class="overall-progress-bar">
+                <div id="overall-progress-bar-inner" class="overall-progress-bar-inner">0%</div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Function to update a section's progress
+        function updateProgress(sectionId, progress) {
+            const progressBar = document.getElementById('progress-bar-' + sectionId);
+            progressBar.style.width = progress + '%';
+            progressBar.textContent = progress + '%';
+
+            // Store the progress in localStorage
+            localStorage.setItem(sectionId, progress);
+
+            // Update overall progress
+            updateOverallProgress();
+        }
+
+        // Function to update the overall progress
+        function updateOverallProgress() {
+            const section1Progress = parseInt(localStorage.getItem('section1') || 0, 10);
+            const section2Progress = parseInt(localStorage.getItem('section2') || 0, 10);
+            const section3Progress = parseInt(localStorage.getItem('section3') || 0, 10);
+
+            const overallProgress = Math.round((section1Progress + section2Progress + section3Progress) / 3);
+            const overallProgressBar = document.getElementById('overall-progress-bar-inner');
+            overallProgressBar.style.width = overallProgress + '%';
+            overallProgressBar.textContent = overallProgress + '%';
+
+            // Store overall progress in localStorage
+            localStorage.setItem('overallProgress', overallProgress);
+        }
+
+        // Initialize progress bars from localStorage on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const section1Progress = localStorage.getItem('section1') || '0';
+            const section2Progress = localStorage.getItem('section2') || '0';
+            const section3Progress = localStorage.getItem('section3') || '0';
+            const overallProgress = localStorage.getItem('overallProgress') || '0';
+
+            document.getElementById('progress-bar-section1').style.width = section1Progress + '%';
+            document.getElementById('progress-bar-section1').textContent = section1Progress + '%';
+
+            document.getElementById('progress-bar-section2').style.width = section2Progress + '%';
+            document.getElementById('progress-bar-section2').textContent = section2Progress + '%';
+
+            document.getElementById('progress-bar-section3').style.width = section3Progress + '%';
+            document.getElementById('progress-bar-section3').textContent = section3Progress + '%';
+
+            document.getElementById('overall-progress-bar-inner').style.width = overallProgress + '%';
+            document.getElementById('overall-progress-bar-inner').textContent = overallProgress + '%';
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+

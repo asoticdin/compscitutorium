@@ -1,0 +1,258 @@
+/* General body styling */
+body {
+    font-family: "Chivo Mono", monospace;
+    margin: 0;
+    padding: 20px;
+    background-image: url('background.png'); /* Adjust the path */
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background-attachment: fixed; /* Makes the background static (doesn't scroll) */
+}
+
+/* Optional: To add an overlay with a faded effect */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.96); /* White overlay with 90% opacity */
+    z-index: -1; /* Place it behind all other content */
+}
+
+/* Sidebar styling */
+.sidebar {
+    width: 140px; /* Fixed width of the sidebar */
+    background-color: rgb(255, 255, 255);
+    padding: 20px 10px; /* Padding inside the sidebar */
+    position: fixed;
+    top: 100px; /* Space from the top, below the logo */
+    left: 20px; /* Space from the left edge */
+    height: 100vh; /* Full viewport height */
+    overflow-y: auto; /* Allows scrolling if content exceeds viewport height */
+    box-shadow: 0 0 0 0 black;
+    border: 1px solid black;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hide scrollbar for Chrome, Safari, and Opera */
+.sidebar::-webkit-scrollbar {
+    width: 0px;
+}
+
+/* Hide scrollbar for IE, Edge, and Firefox */
+.sidebar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* Sidebar link styling */
+.sidebar-link {
+    cursor: pointer;
+    margin: 5px 0;
+    padding: 3px;
+    text-decoration: none;
+    color: black;
+    display: block;
+}
+
+/* Highlighted sidebar link when section is in view */
+.sidebar-link.highlight {
+    color: rgb(26, 176, 179); /* Text color for the highlighted link */
+    font-weight: bold; /* Bold text for the highlighted link */
+    
+}
+
+/* Logo container styling */
+.logo-container {
+    position: fixed;
+    top: 20px;  /* Distance from the top of the window */
+    left: 20px; /* Distance from the left edge of the window */
+    width: 160px;  /* Adjust as needed based on the logo size */
+    height: 60px;  /* Adjust as needed based on the logo size */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+}
+
+/* Header styling */
+.menu-header {
+    position: fixed;
+    align-items: center;
+    top: 20px; /* Same distance from the top as the logo */
+    left: 200px; /* Starts right after the logo with spacing */
+    width: calc(100% - 260px); /* Adjusted width to add 20px space on the right */
+    height: 70px;
+    background-color: white;
+    z-index: 1000;
+    padding: 10px 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    transition: all 0.4s ease-in-out;
+}
+
+/* Menu styling */
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px 0;
+    margin: 0;
+}
+
+.menu ul a:visited {
+    color: inherit; /* Inherit the color from the parent or set it to a specific color */
+    text-decoration: none; /* Remove underline if any */
+}
+
+/* Active state color */
+a:active {
+    color: rgb(8, 85, 112);
+}
+
+.menu ul a:active {
+    color: rgb(8, 85, 112);
+}
+
+/* Hover and active states for menu links */
+.menu-header a.active {
+    color: rgb(53, 110, 167);
+}
+
+.menu-header a:hover {
+    color: rgb(35, 169, 169);
+}
+
+/* Remove the purple color on hover */
+.menu-header:hover {
+    color: black;
+}
+
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.menu ul a{
+    text-decoration:none;
+}
+
+.menu ul a:visited{
+    text-decoration: none;
+    color: black;
+}
+
+.menu ul a:active{
+    color: rgb(8, 85, 112);
+}
+
+/* Active state color for the currently active page */
+.menu ul a.active {
+    color: rgb(53, 110, 167); /* Blue color for active page link */
+    font-weight: bold; /* Optional: Make active link bold */
+}
+
+/* Give active links priority over visited links */
+.menu ul a.active:visited {
+    color: rgb(53, 110, 167); /* Ensures active links remain blue even when visited */
+}
+
+
+.menu li {
+    margin-right: 20px;
+    position: relative;
+}
+
+/* Dropdown styles */
+.menu li ul {
+    display: none; /* Initially hide all dropdowns */
+    position: absolute;
+    top: 100%; /* Position the dropdown below the parent <li> */
+    left: 0;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    min-width: 200px; /* Set a minimum width for dropdowns */
+    padding: 10px 0;
+}
+
+.menu li ul li {
+    margin: 0;
+    padding: 10px 20px;
+    white-space: nowrap; /* Prevent text from wrapping */
+}
+
+.menu li:hover > ul {
+    display: block;
+}
+
+/* Style the dropdown links */
+.menu li ul li a {
+    color: black;
+    text-decoration: none;
+}
+
+/* Main content styling */
+main {
+    margin-left: 200px; /* Space from the sidebar */
+    padding: 140px 20px 20px 20px; /* Enough padding for margins */
+}
+
+/* Hover and Active States */
+.sidebar:hover {
+    /* Remove transform on hover to prevent internal scrollbar issue */
+    box-shadow: 2px 5px 0 0 black;
+}
+
+.menu-header:hover, .sidebar-link.highlight:hover {
+    color: blue;
+}
+
+.menu-header a.visited{
+    text-decoration: none;
+}
+
+.menu-header a.active {
+    color: rgb(53, 110, 167);
+}
+
+.menu-header:hover{
+    color: black;
+}
+
+.menu-header a:hover{
+    color:rgb(35, 169, 169);
+}
+
+/* When hovered, show the full header */
+.menu-header:hover {
+    top: 20px; /* Fully visible */
+    box-shadow: 2px 5px 0 0 black;
+}
+
+/* Active states */
+.menu-header:active, .sidebar:active, .logo-container:active {
+    color: blue;
+    box-shadow: 0 0 0 0 black;
+}
+
+
+/* Section title styling */
+section h2 {
+    margin-top: 30px; /* Adds space before each title */
+    padding-top: 70px; /* Adds additional space inside each title area */
+    font-size: 24px; /* Adjusts the font size if needed */
+    font-weight: bold; /* Ensures the title is bold */
+}
+
+
+
+
